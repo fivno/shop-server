@@ -1,5 +1,7 @@
 package com.example.demo.service.Impl;
 
-public class carouselServiceImpl extends carouselService {
+import com.example.demo.service.carouselService;
+
+public class carouselServiceImpl implements carouselService {
 
 }
