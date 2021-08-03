@@ -1,8 +1,10 @@
 package com.example.demo.enity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 @Data
 @AllArgsConstructor
@@ -10,8 +12,10 @@ import lombok.NoArgsConstructor;
 public class product_picture {
 
 	private Integer id;
-	
-	private String product_picture;
+
+	private Integer productId;
+
+	private String productPicture;
 	
 	private String intro;
 	

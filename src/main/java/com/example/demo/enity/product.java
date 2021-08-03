@@ -3,6 +3,7 @@ package com.example.demo.enity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,28 +11,29 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class product {
 
-	@TableId(type = IdType.AUTO)
-	private Integer product_id;
+	//@TableId(type = IdType.AUTO)
+	private Integer productId;
 	
-	private String product_name;
+	private String productName;
 	
-	private  Integer category_id;
+	private  Integer categoryId;
 	
-	private String product_title;
+	private String productTitle;
 	
-	private String product_intro;
+	private String productIntro;
 	
-	private String product_picture;
+	private String productPicture;
 	
-	private Double product_price;
+	private Double productPrice;
 	
-	private Double product_selling_price;
+	private Double productSellingPrice;
 	
-	private  Integer product_num;
+	private  Integer productNum;
 	
-	private  Integer product_sales;
+	private  Integer productSales;
 	
 	
 	

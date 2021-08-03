@@ -11,17 +11,17 @@ public class orders {
 
 	private Integer id;
 	
-	private Integer order_id;
+	private Integer orderId;
 	
-	private Integer user_id;
+	private Integer userId;
 	
-	private Integer product_id;
+	private Integer productId;
 	
-	private Integer product_num;
+	private Integer productNum;
 	
-	private Double product_price;
+	private Double productPrice;
 	
-	private Integer order_time;
+	private Integer orderTime;
 	
 	
 	

@@ -11,11 +11,11 @@ public class collect {
 	
 	private Integer id;
 	
-	private Integer user_id;
+	private Integer userId;
 	
-	private Integer product_id;
+	private Integer productId;
 	
-	private Integer collect_time;
+	private Integer collectTime;
 	
 	
 	

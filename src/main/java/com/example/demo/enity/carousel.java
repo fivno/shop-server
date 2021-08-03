@@ -18,7 +18,7 @@ public class carousel {
 
 	//映射ID
 	@TableId(type = IdType.AUTO)
-	private Integer carousel_id;
+	private Integer carouselId;
 	
 	//图片路径
 	private String imgPath;

@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class category {
 
 	@TableId(type = IdType.AUTO)
-	private Integer category_ig;
+	private Integer categoryIg;
 	
-	private String category_name;
+	private String categoryName;
 	
 	
 	

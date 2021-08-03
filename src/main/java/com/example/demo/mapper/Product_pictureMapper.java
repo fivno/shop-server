@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.enity.product_picture;
 
 @Repository
-public interface product_pictureMapper extends BaseMapper<product_picture>{
+public interface Product_pictureMapper extends BaseMapper<product_picture>{
+
 
 }
