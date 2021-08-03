@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.enity.product;
+import com.example.demo.enity.product_picture;
 import com.example.demo.mapper.productMapper;
 import com.example.demo.mapper.Product_pictureMapper;
 import org.junit.jupiter.api.Test;
@@ -24,21 +25,16 @@ class productServiceTest {
     @Autowired
     Product_pictureMapper ppM;
 
+    @Autowired
+    productService ProductService;
+
     @Test
     void testFindAll() {
 
-//        product p=new product();
-//        //p.setProduct_id(1);
-//        System.out.println(p);
-//
-//
-        Map<String,Object> columnMap=new HashMap<>();
-        columnMap.put("product_id",1);
-        List<product> list = ProductMapper.selectByMap(columnMap);
-        System.out.println(list);
-//        List<Product_picture> list2=ppM.selectList(null);
-//
-//        System.out.println(list2);
+        System.out.println("FindALLProduct(JSON)"+ProductService.findAllProduct());
+
+
+
 
     }
 }
