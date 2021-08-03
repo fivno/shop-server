@@ -24,11 +24,7 @@ public class carousel {
 	private String imgPath;
 	
 	//图片描述	
-	private String describe;
-	
-	
-	
-	
-	
-	
+	private String describes;
+
+
 }

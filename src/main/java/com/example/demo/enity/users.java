@@ -17,7 +17,7 @@ public class users {
 	@TableId(type = IdType.AUTO)
 	private Integer userId;
 	
-	private String userNameString;
+	private String userName;
 	
 	private String password;
 	

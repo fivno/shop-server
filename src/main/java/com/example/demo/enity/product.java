@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 public class product {
 
-	//@TableId(type = IdType.AUTO)
+	@TableId(type = IdType.AUTO)
 	private Integer productId;
 	
 	private String productName;
