@@ -23,7 +23,16 @@ public interface CategoryService {
 
 
     //改
-    boolean update(int categoryId,String categoryName); //根据id修改categoryName
+
+    /**
+     *
+     * 根据id修改categoryName
+     *
+     * @param categoryId
+     * @param categoryName
+     * @return
+     */
+    boolean update(int categoryId,String categoryName);
 
 
 

@@ -29,7 +29,26 @@ public interface ShoppingCartService {
 
 
     //改
+
+    /**
+     *
+     * 根据id找到相应订单，修改数量
+     *
+     * @param id
+     * @param num
+     * @return
+     */
     boolean update(int id,int num);         //根据id修改数量
+
+    /**
+     *
+     * 根据用户id和产品id找到相应订单，修改商品数量
+     *
+     * @param userId
+     * @param productId
+     * @param num
+     * @return
+     */
     boolean update(int userId, int productId, int num);   //根据用户id和产品id修改购物车该商品数量
 
 

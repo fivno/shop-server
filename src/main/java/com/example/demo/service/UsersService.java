@@ -15,6 +15,8 @@ public interface UsersService {
 
     JSONArray findByPhoneNumber(String user_phoneNumber);
 
+
+
     //增
     boolean insert( JSONObject usersJSON);     //增加（JSONObject）
     boolean insert( Users users);     //增加（users实体）
@@ -27,11 +29,49 @@ public interface UsersService {
 
 
     //改
+
     boolean updateById(JSONObject userJSON);
+
+    /**
+     *
+     * 用法实例：
+     * 修改id=123456的用户，将其地址userAddress改为武汉
+     * users User=new users();
+     * User.setAdress("武汉")；
+     *updateByUserPhoneNumber(123456，User)；
+     *
+     * @param id
+     * @param User
+     * @return
+     */
     boolean updateById(int id, Users User);
 
+
+    /**
+     * 用法实例：
+     * 修改phoneNumber=123456的用户，将其地址userAddress改为武汉
+     * users User=new users();
+     * User.setAdress("武汉")；
+     *updateByUserPhoneNumber("123456"，User)；
+     *
+     * @param phoneNumber
+     * @param User
+     * @return boolean
+     */
    boolean updateByUserPhoneNumber(String phoneNumber, Users User);      //根据手机号，可修改用户名和密码
 
+
+    /**
+     * 用法实例：
+     * 修改userName=xiaoming的用户，讲其地址userAddress改为武汉
+     * users User=new users();
+     * User.setAddress("武汉")；
+     *updateByUserName("小明"，User)；
+     *
+     * @param userName
+     * @param User
+     * @return boolean
+     */
     boolean updateByUserName(String userName, Users User);               //根据用户名，可修改手机号和密码
 
 }

@@ -145,12 +145,12 @@ public class JsonUtil {
     public static Users JSONObject2users (JSONObject usersJSON){
 
         Integer userId=usersJSON.getInteger("userId");
-        String userNameString=usersJSON.getString("userNameString");
+        String userName=usersJSON.getString("userName");
         String password=usersJSON.getString("password");
         String userPhoneNumber=usersJSON.getString("userPhoneNumber");
+        String userAddress=usersJSON.getString("userAddress");
 
-
-        Users Obj=new Users();
+        Users Obj=new Users(userId,userName,password,userPhoneNumber,userAddress);
         return Obj;
     }
 

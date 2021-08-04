@@ -35,8 +35,31 @@ public interface OrdersService {
     //改
 
     boolean updateById(JSONObject orderJSON);             //根据id修改信息
+
+
+    /**
+     *用法实例；
+     * 修改 商品id=123456 的订单，将其 商品数目 orderNum 改为1
+     * Orders order=new Orders();
+     * productPicture.setOrderNum(1)；
+     *updateByUserPhoneNumber(123456，productPicture)；
+     *
+     * @param id
+     * @param order
+     * @return
+     */
     boolean updateById(int id, Orders order);
-    boolean update(int orderId,int productId,int num);    //根据订单Id和修改商品数量
+
+    /**
+     *
+     * 根据订单Id和修改商品数量
+     *
+     * @param orderId
+     * @param productId
+     * @param num
+     * @return
+     */
+    boolean update(int orderId,int productId,int num);
 
 
 

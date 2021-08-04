@@ -28,9 +28,39 @@ public interface ProductPictureService {
 
 
     //改
+
+
     boolean updateById(JSONObject productPictureJSON);               //根据id修改
+
+
+    /**
+     *
+     *
+     * 用法实例：
+     * 修改 商品图片名 productPicture=123456 的产品图片，将其 商品id productId 改为2
+     * ProductPicture productPicture=new ProductPicture();
+     * productPicture.setProductId(2)；
+     *updateByUserPhoneNumber(123456，productPicture)；
+     *
+     * @param productPicture
+     * @param productId
+     * @return
+     */
     boolean update(String productPicture,int productId);            //根据图片名修改productId
 
+    /**
+     *
+     *
+     *用法实例：
+     * 修改 商品图片id=123456 的产品图片，将其 商品id productId 改为2
+     * ProductPicture productPicture=new ProductPicture();
+     * productPicture.setProductId(2)；
+     *updateByUserPhoneNumber(123456，productPicture)；
+     *
+     * @param id
+     * @param productPicture
+     * @return
+     */
     boolean updateById(int id, ProductPicture productPicture);       //除id外皆可修改
 
 }

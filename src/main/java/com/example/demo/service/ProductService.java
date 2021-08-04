@@ -36,7 +36,35 @@ public interface ProductService {
 
     //改
     boolean update(Product product, Wrapper<Product> updateWrapper);
+
+
+    /**
+     *
+     *用法实例：
+     * 修改 商品id=123456 的商品，将其 商品名 productName 改为华为mate40
+     * ProductPicture productPicture=new ProductPicture();
+     * productPicture.setProductName("华为mate40")；
+     *updateByUserPhoneNumber(123456，productPicture)；
+     *
+     * @param id
+     * @param product
+     * @return
+     */
     boolean updateById(int id, Product product);                       //除id外皆可修改
+
+
+    /**
+     *
+     *用法实例：
+     * 修改 商品名productName=华为mate40 的商品，将其 商品价格 productPrice 改为5000
+     * ProductPicture productPicture=new ProductPicture();
+     * productPicture.setProductPrice(5000)；
+     *updateByUserPhoneNumber("华为mate40"，productPicture)；
+     *
+     * @param productName
+     * @param product
+     * @return
+     */
     boolean updateByProductName(String productName, Product product);           //除id，name外皆可修改
 
 
