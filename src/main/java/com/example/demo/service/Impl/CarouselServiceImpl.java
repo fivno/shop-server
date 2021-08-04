@@ -2,9 +2,9 @@ package com.example.demo.service.Impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.enity.carousel;
+import com.example.demo.enity.Carousel;
 import com.example.demo.mapper.carouselMapper;
-import com.example.demo.service.carouselService;
+import com.example.demo.service.CarouselService;
 import com.example.demo.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class carouselServiceImpl implements carouselService {
+public class CarouselServiceImpl implements CarouselService {
 
     @Autowired
     carouselMapper CarouselMapper;
@@ -50,37 +50,37 @@ public class carouselServiceImpl implements carouselService {
     @Override
     public boolean insert(JSONObject carouselJSON) {
 
-        carousel Carousel= JsonUtil.JSONObject2carousel(carouselJSON);
+        Carousel carousel= JsonUtil.JSONObject2carousel(carouselJSON);
+
+        CarouselMapper.insert(carousel);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean insert(Carousel Carousel) {
 
         CarouselMapper.insert(Carousel);
 
-
-        return true;
-    }
-
-    @Override
-    public boolean insert(carousel Carousel) {
-
-        CarouselMapper.insert(Carousel);
-
         return true;
     }
 
 
     @Override
-    public boolean upadateById(JSONObject carouselJSON) {
+    public boolean updateById(JSONObject carouselJSON) {
 
-        carousel Carousel= JsonUtil.JSONObject2carousel(carouselJSON);
+        Carousel carousel= JsonUtil.JSONObject2carousel(carouselJSON);
 
-        CarouselMapper.updateById(Carousel);
+        CarouselMapper.updateById(carousel);
 
         return true;
     }
 
     @Override
-    public boolean updateById(carousel Carousel) {
+    public boolean updateById(Carousel carousel) {
 
-        CarouselMapper.updateById(Carousel);
+        CarouselMapper.updateById(carousel);
         return true;
     }
 

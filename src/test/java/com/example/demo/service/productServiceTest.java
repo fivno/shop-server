@@ -1,17 +1,13 @@
 package com.example.demo.service;
 
-import com.example.demo.enity.product;
-import com.example.demo.enity.product_picture;
 import com.example.demo.mapper.productMapper;
 import com.example.demo.mapper.Product_pictureMapper;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrint;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
@@ -27,7 +23,7 @@ class productServiceTest {
     Product_pictureMapper ppM;
 
     @Autowired
-    productService ProductService;
+    com.example.demo.service.ProductService ProductService;
 
 
     @Test

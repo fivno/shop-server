@@ -1,21 +1,18 @@
 package com.example.demo.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.example.demo.enity.product_picture;
+import com.example.demo.enity.ProductPicture;
 import com.example.demo.util.JsonUtil;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @MapperScan("com.example.demo.mapper")
-class product_pictureServiceTest {
+class productPictureServiceTest {
 
     @Autowired
-    product_pictureService PPS;
+    ProductPictureService PPS;
 
     @Test
     void deleteById() {
@@ -42,7 +39,7 @@ class product_pictureServiceTest {
     @Test
     void updateById() {
 
-        product_picture pp=new product_picture();
+        ProductPicture pp=new ProductPicture();
 
         pp.setId(221);
         pp.setProductId(69);

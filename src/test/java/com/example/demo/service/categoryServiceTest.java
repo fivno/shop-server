@@ -5,14 +5,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @MapperScan("com.example.demo.mapper")
 class categoryServiceTest {
 
     @Autowired
-    categoryService CategoryService;
+    com.example.demo.service.CategoryService CategoryService;
 
     @Test
     void testMothers() {

@@ -2,9 +2,9 @@ package com.example.demo.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.enity.orders;
+import com.example.demo.enity.Orders;
 
-public interface ordersService {
+public interface OrdersService {
 
     //查
     JSONArray findALL();
@@ -19,7 +19,7 @@ public interface ordersService {
 
     //增
     boolean insert( JSONObject ordersJSON);     //增加（JSONObject）
-    boolean insert(orders Orders);              //增加（orders实体）
+    boolean insert(Orders order);              //增加（orders实体）
 
 
 
@@ -35,6 +35,7 @@ public interface ordersService {
     //改
 
     boolean updateById(JSONObject orderJSON);             //根据id修改信息
+    boolean updateById(int id, Orders order);
     boolean update(int orderId,int productId,int num);    //根据订单Id和修改商品数量
 
 

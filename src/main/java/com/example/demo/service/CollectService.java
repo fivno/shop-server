@@ -1,11 +1,10 @@
 package com.example.demo.service;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.enity.category;
+import com.example.demo.enity.Category;
 
-public interface collectService {
+public interface CollectService {
 
     //查
 
@@ -22,7 +21,7 @@ public interface collectService {
 
     boolean insert(JSONObject categoryJSON);    //增加（JSONObject）
 
-    boolean insert(category Category);          //增加（category实体）
+    boolean insert(Category category);          //增加（category实体）
 
     //删
 

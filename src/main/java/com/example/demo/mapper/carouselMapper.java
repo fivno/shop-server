@@ -5,6 +5,6 @@ import com.example.demo.enity.*;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Repository
-public interface carouselMapper extends BaseMapper<carousel>{
+public interface carouselMapper extends BaseMapper<Carousel>{
 
 }

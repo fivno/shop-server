@@ -2,9 +2,9 @@ package com.example.demo.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.enity.carousel;
+import com.example.demo.enity.Carousel;
 
-public interface carouselService {
+public interface CarouselService {
 
     //查
     JSONArray findALL();
@@ -22,12 +22,12 @@ public interface carouselService {
 
     //增
     boolean insert(JSONObject carouselJSON);    //增加（JSONObject）
-    boolean insert(carousel carousel);          //增加（carousel实体）
+    boolean insert(Carousel carousel);          //增加（carousel实体）
 
     //改
-    boolean upadateById(JSONObject carouselJSON);
+    boolean updateById(JSONObject carouselJSON);
 
-    boolean updateById(carousel Carousel);
+    boolean updateById(Carousel carousel);
 
 
 }

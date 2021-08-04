@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class shoppingCart {
+public class Collect {
 
 	@TableId(type = IdType.AUTO)
 	private Integer id;
@@ -18,7 +18,7 @@ public class shoppingCart {
 	
 	private Integer productId;
 	
-	private Integer num;
+	private Integer collectTime;
 	
 	
 	

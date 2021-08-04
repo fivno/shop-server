@@ -1,7 +1,5 @@
 package com.example.demo.enity;
 
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
@@ -12,18 +10,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class users {
+
+public class Category {
 
 	@TableId(type = IdType.AUTO)
-	private Integer userId;
+	private Integer categoryId;
 	
-	private String userName;
-	
-	private String password;
-	
-	private String userPhoneNumber;
-	
-	
+	private String categoryName;
 	
 	
 	

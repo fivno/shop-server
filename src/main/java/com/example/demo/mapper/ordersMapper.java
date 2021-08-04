@@ -3,9 +3,9 @@ package com.example.demo.mapper;
 import org.springframework.stereotype.Repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.demo.enity.orders;
+import com.example.demo.enity.Orders;
 
 @Repository
-public interface ordersMapper extends BaseMapper<orders>{
+public interface ordersMapper extends BaseMapper<Orders>{
 
 }

@@ -3,13 +3,10 @@ package com.example.demo.service.Impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.example.demo.enity.category;
-import com.example.demo.enity.product;
+import com.example.demo.enity.Category;
 import com.example.demo.mapper.categoryMapper;
-import com.example.demo.service.categoryService;
+import com.example.demo.service.CategoryService;
 import com.example.demo.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class categoryServiceImpl implements categoryService {
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private categoryMapper CategoryMapper;
@@ -27,7 +24,7 @@ public class categoryServiceImpl implements categoryService {
     @Override
     public JSONArray findALL() {
 
-        List<category> categoryList= CategoryMapper.selectList(null);
+        List<Category> categoryList= CategoryMapper.selectList(null);
 
         JSONArray allProductJSON= JsonUtil.list2JSONArray(categoryList);
 
@@ -41,11 +38,11 @@ public class categoryServiceImpl implements categoryService {
 
         categoryMap.put("category_id", categoryId);
 
-        List<category> categoryList = CategoryMapper.selectByMap(categoryMap);
+        List<Category> categoryList = CategoryMapper.selectByMap(categoryMap);
 
         JSONObject jsonStu = null;
 
-        for (category category : categoryList) {
+        for (Category category : categoryList) {
             String str = JSONObject.toJSONString(category);
             jsonStu = JSONObject.parseObject(str);
         }
@@ -60,11 +57,11 @@ public class categoryServiceImpl implements categoryService {
 
         categoryMap.put("category_name", name);
 
-        List<category> categoryList = CategoryMapper.selectByMap(categoryMap);
+        List<Category> categoryList = CategoryMapper.selectByMap(categoryMap);
 
         JSONObject jsonStu = null;
 
-        for (category category : categoryList) {
+        for (Category category : categoryList) {
             String str = JSONObject.toJSONString(category);
             jsonStu = JSONObject.parseObject(str);
         }
@@ -75,7 +72,7 @@ public class categoryServiceImpl implements categoryService {
     @Override
     public boolean insert(JSONObject categoryJSON) {
 
-        category category = JSON.toJavaObject(categoryJSON,category.class);
+        Category category = JSON.toJavaObject(categoryJSON, Category.class);
 
         CategoryMapper.insert(category);
 
@@ -83,9 +80,9 @@ public class categoryServiceImpl implements categoryService {
     }
 
     @Override
-    public boolean insert(category Category) {
+    public boolean insert(Category category) {
 
-        CategoryMapper.insert(Category);
+        CategoryMapper.insert(category);
 
         return true;
     }
@@ -114,14 +111,14 @@ public class categoryServiceImpl implements categoryService {
     @Override
     public boolean update(int categoryId, String categoryName) {
 
-        UpdateWrapper<category> updateWrapper=new UpdateWrapper<>();
+        UpdateWrapper<Category> updateWrapper=new UpdateWrapper<>();
         updateWrapper.eq("category_id",categoryId);
 
-        category Category =new category();
+        Category category =new Category();
 
-        Category.setCategoryName(categoryName);
+        category.setCategoryName(categoryName);
 
-        CategoryMapper.update(Category,updateWrapper);
+        CategoryMapper.update(category,updateWrapper);
 
         return true;
 

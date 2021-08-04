@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class product {
+public class Product {
 
 	@TableId(type = IdType.AUTO)
 	private Integer productId;

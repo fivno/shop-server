@@ -2,9 +2,9 @@ package com.example.demo.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.enity.product_picture;
+import com.example.demo.enity.ProductPicture;
 
-public interface product_pictureService {
+public interface ProductPictureService {
 
 
     //查
@@ -18,7 +18,7 @@ public interface product_pictureService {
 
     //增
     boolean insert( JSONObject productPictureJSON);     //增加（JSONObject）
-    boolean insert( product_picture productPicture);     //增加（product_picture实体）
+    boolean insert( ProductPicture productPicture);     //增加（product_picture实体）
 
     //删
 
@@ -28,9 +28,9 @@ public interface product_pictureService {
 
 
     //改
-    boolean updateById(JSONObject productPictureJSON); //根据id修改
-    boolean update(String productPicture,int productId);//根据图片名修改productId
+    boolean updateById(JSONObject productPictureJSON);               //根据id修改
+    boolean update(String productPicture,int productId);            //根据图片名修改productId
 
-
+    boolean updateById(int id, ProductPicture productPicture);       //除id外皆可修改
 
 }

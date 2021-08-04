@@ -2,21 +2,24 @@ package com.example.demo.enity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class category {
+public class ProductPicture {
 
 	@TableId(type = IdType.AUTO)
-	private Integer categoryId;
+	private Integer id;
+
+	private Integer productId;
+
+	private String productPicture;
 	
-	private String categoryName;
+	private String intro;
 	
 	
 	

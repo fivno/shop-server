@@ -1,21 +1,19 @@
 package com.example.demo.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.enity.orders;
+import com.example.demo.enity.Orders;
 import com.example.demo.util.JsonUtil;
-import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @MapperScan("com.example.demo.mapper")
 class ordersServiceTest {
 
     @Autowired
-    ordersService OrderService;
+    OrdersService OrderService;
 
     @Test
     void findALL() {
@@ -74,7 +72,7 @@ class ordersServiceTest {
     @Test
     void updateById() {
 
-        orders Order=new orders();
+        Orders Order=new Orders();
 
         Order.setId(1);
         Order.setOrderId(2);

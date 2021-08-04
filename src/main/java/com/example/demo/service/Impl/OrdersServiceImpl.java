@@ -4,13 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.example.demo.enity.category;
-import com.example.demo.enity.orders;
-import com.example.demo.enity.product;
+import com.example.demo.enity.Orders;
 import com.example.demo.mapper.ordersMapper;
-import com.example.demo.service.ordersService;
+import com.example.demo.service.OrdersService;
 import com.example.demo.util.JsonUtil;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ordersServiceImpl implements ordersService {
+public class OrdersServiceImpl implements OrdersService {
 
     @Autowired
     private ordersMapper OrdersMapper;
@@ -27,7 +24,7 @@ public class ordersServiceImpl implements ordersService {
     @Override
     public JSONArray findALL() {
 
-        List<orders> ordersList= OrdersMapper.selectList(null);
+        List<Orders> ordersList= OrdersMapper.selectList(null);
 
         JSONArray allProductJSON= JsonUtil.list2JSONArray(ordersList);
 
@@ -41,11 +38,11 @@ public class ordersServiceImpl implements ordersService {
 
         ordersMap.put("id", id);
 
-        List<orders> ordersList = OrdersMapper.selectByMap(ordersMap);
+        List<Orders> ordersList = OrdersMapper.selectByMap(ordersMap);
 
         JSONObject jsonStu = null;
 
-        for (orders orders : ordersList) {
+        for (Orders orders : ordersList) {
             String str = JSONObject.toJSONString(orders);
             jsonStu = JSONObject.parseObject(str);
         }
@@ -60,7 +57,7 @@ public class ordersServiceImpl implements ordersService {
 
         ordersMap.put("order_id", order_id);
 
-        List<orders> carouselList = OrdersMapper.selectByMap(ordersMap);
+        List<Orders> carouselList = OrdersMapper.selectByMap(ordersMap);
 
         JSONArray allProductJSON=JsonUtil.list2JSONArray(carouselList);
 
@@ -74,7 +71,7 @@ public class ordersServiceImpl implements ordersService {
 
         ordersMap.put("user_id", user_id);
 
-        List<orders> carouselList = OrdersMapper.selectByMap(ordersMap);
+        List<Orders> carouselList = OrdersMapper.selectByMap(ordersMap);
 
         JSONArray allProductJSON=JsonUtil.list2JSONArray(carouselList);
 
@@ -88,7 +85,7 @@ public class ordersServiceImpl implements ordersService {
 
         ordersMap.put("product_id", product_id);
 
-        List<orders> carouselList = OrdersMapper.selectByMap(ordersMap);
+        List<Orders> carouselList = OrdersMapper.selectByMap(ordersMap);
 
         JSONArray allProductJSON=JsonUtil.list2JSONArray(carouselList);
 
@@ -98,7 +95,7 @@ public class ordersServiceImpl implements ordersService {
     @Override
     public boolean insert(JSONObject ordersJSON) {
 
-        orders Order = JSON.toJavaObject(ordersJSON,orders.class);
+        Orders Order = JSON.toJavaObject(ordersJSON, Orders.class);
 
         OrdersMapper.insert(Order);
 
@@ -106,9 +103,9 @@ public class ordersServiceImpl implements ordersService {
     }
 
     @Override
-    public boolean insert(orders Orders) {
+    public boolean insert(Orders order) {
 
-        OrdersMapper.insert(Orders);
+        OrdersMapper.insert(order);
 
         return true;
     }
@@ -154,12 +151,23 @@ public class ordersServiceImpl implements ordersService {
     @Override
     public boolean updateById(JSONObject orderJSON) {
 
-        orders Order=JSON.toJavaObject(orderJSON,orders.class);
+        Orders Order=JSON.toJavaObject(orderJSON, Orders.class);
 
-        UpdateWrapper<orders> updateWrapper=new UpdateWrapper<>();
+        UpdateWrapper<Orders> updateWrapper=new UpdateWrapper<>();
         updateWrapper.eq("id",Order.getId());
 
         OrdersMapper.update(Order,updateWrapper);
+
+        return true;
+    }
+
+    @Override
+    public boolean updateById(int id, Orders order) {
+        UpdateWrapper<Orders> updateWrapper=new UpdateWrapper<>();
+        updateWrapper.eq("id",id);
+
+        OrdersMapper.update(order,updateWrapper);
+
 
         return true;
     }
@@ -171,10 +179,10 @@ public class ordersServiceImpl implements ordersService {
         mapper.put("order_id",orderId);
         mapper.put("product_id",productId);
 
-        UpdateWrapper<orders> updateWrapper=new UpdateWrapper<>();
+        UpdateWrapper<Orders> updateWrapper=new UpdateWrapper<>();
         updateWrapper.allEq(mapper);
 
-        orders Order=new orders();
+        Orders Order=new Orders();
         Order.setProductNum(num);
         OrdersMapper.update(Order,updateWrapper);
 
