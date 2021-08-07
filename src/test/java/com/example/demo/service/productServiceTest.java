@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.mapper.productMapper;
-import com.example.demo.mapper.Product_pictureMapper;
+import com.example.demo.mapper.ProductMapper;
+import com.example.demo.mapper.ProductPictureMapper;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ class productServiceTest {
 
     //productService ProductService;
     @Autowired
-    productMapper ProductMapper;
+    ProductMapper ProductMapper;
 
     @Autowired
-    Product_pictureMapper ppM;
+    ProductPictureMapper ppM;
 
     @Autowired
     com.example.demo.service.ProductService ProductService;

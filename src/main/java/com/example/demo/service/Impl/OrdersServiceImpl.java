@@ -4,8 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.enity.Orders;
-import com.example.demo.mapper.ordersMapper;
+import com.example.demo.enity.ProductPicture;
+import com.example.demo.mapper.OrdersMapper;
 import com.example.demo.service.OrdersService;
 import com.example.demo.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,7 @@ import java.util.Map;
 public class OrdersServiceImpl implements OrdersService {
 
     @Autowired
-    private ordersMapper OrdersMapper;
+    private OrdersMapper OrdersMapper;
 
     @Override
     public JSONArray findALL() {
@@ -30,6 +33,20 @@ public class OrdersServiceImpl implements OrdersService {
 
         return allProductJSON;
     }
+
+    @Override
+    public JSONArray findByPage(int currentPage, int pageNum) {
+        IPage<Orders> OrdersPage = new Page<>(currentPage, pageNum);//参数一是当前页，参数二是每页个数
+
+        OrdersPage = OrdersMapper.selectPage(OrdersPage,null);
+
+        List<Orders> list = OrdersPage.getRecords();
+
+        JSONArray allProductJSON=JsonUtil.list2JSONArray(list);
+
+        return allProductJSON;
+    }
+
 
     @Override
     public JSONObject findById(int id) {

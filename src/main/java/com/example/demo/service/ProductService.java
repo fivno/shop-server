@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
@@ -10,7 +11,7 @@ public interface ProductService {
 
     //查询全部产品
     JSONArray findAllProduct();
-
+    JSONArray findByPage(int currentPage,int pageNum);  //当前页，每页个数
     //通过产品id查询
     JSONObject findByProductId(int product_id);
 
@@ -22,6 +23,9 @@ public interface ProductService {
 
     //通过介绍查询（包含模糊查询）
     JSONArray findByIntro(String intro);
+
+
+    JSONArray findByCategoryId(int categoryId);
 
     //增
     boolean insert( JSONObject productJSON);     //增加（JSONObject）

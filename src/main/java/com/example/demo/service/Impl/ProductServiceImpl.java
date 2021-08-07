@@ -6,9 +6,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.enity.Product;
-import com.example.demo.mapper.productMapper;
+import com.example.demo.enity.ShoppingCart;
+import com.example.demo.mapper.ProductMapper;
 import com.example.demo.service.ProductService;
 import com.example.demo.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,7 @@ import java.util.Map;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    productMapper ProductMapper;
+    ProductMapper ProductMapper;
 
     @Override
     public JSONArray findAllProduct() {
@@ -35,6 +38,20 @@ public class ProductServiceImpl implements ProductService {
 
         return allProductJSON;
     }
+
+    @Override
+    public JSONArray findByPage(int currentPage, int pageNum) {
+        IPage<Product> productPage = new Page<>(currentPage, pageNum);//参数一是当前页，参数二是每页个数
+
+        productPage = ProductMapper.selectPage(productPage,null);
+
+        List<Product> list = productPage.getRecords();
+
+        JSONArray allProductJSON=JsonUtil.list2JSONArray(list);
+
+        return allProductJSON;
+    }
+
 
     @Override
     public JSONObject findByProductId(int product_id) {
@@ -100,6 +117,19 @@ public class ProductServiceImpl implements ProductService {
 
         return allProductJSON;
 
+    }
+
+    @Override
+    public JSONArray findByCategoryId(int categoryId) {
+        Map<String,Object> productMap = new HashMap<String, Object>();
+
+        productMap.put("category_id", categoryId);
+
+        List<Product> productList = ProductMapper.selectByMap(productMap);
+
+        JSONArray List=JsonUtil.list2JSONArray(productList);
+
+        return List;
     }
 
     @Override

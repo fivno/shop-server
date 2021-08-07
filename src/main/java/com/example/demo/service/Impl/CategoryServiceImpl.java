@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.demo.enity.Category;
-import com.example.demo.mapper.categoryMapper;
+import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.service.CategoryService;
 import com.example.demo.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
-    private categoryMapper CategoryMapper;
+    private CategoryMapper CategoryMapper;
 
     @Override
     public JSONArray findALL() {

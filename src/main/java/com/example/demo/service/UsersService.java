@@ -5,17 +5,22 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.enity.Users;
 
+import javax.servlet.http.HttpSession;
+
 public interface UsersService {
 
     JSONArray findAll();
-
+    JSONArray findByPage(int currentPage,int pageNum);  //当前页，每页个数
     JSONArray findByUserId(int user_id);
 
+    //模糊查找
     JSONArray findByUserName(String user_name);
 
     JSONArray findByPhoneNumber(String user_phoneNumber);
 
 
+    //准确查找
+    Users findByUserNameOne(String userName);
 
     //增
     boolean insert( JSONObject usersJSON);     //增加（JSONObject）
@@ -73,5 +78,22 @@ public interface UsersService {
      * @return boolean
      */
     boolean updateByUserName(String userName, Users User);               //根据用户名，可修改手机号和密码
+
+
+    /**
+     *
+     * @return
+     */
+    JSONObject login(JSONObject jsonObject);
+
+
+
+    JSONObject register(JSONObject jsonObject);
+
+
+    boolean isUserNameExisting(String userName);
+
+
+
 
 }

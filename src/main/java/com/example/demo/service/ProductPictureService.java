@@ -9,7 +9,7 @@ public interface ProductPictureService {
 
     //查
     JSONArray findALL();
-
+    JSONArray findByPage(int currentPage,int pageNum);  //当前页，每页个数
     JSONObject findById(int id);
 
     JSONArray findByProductId(int product_id);

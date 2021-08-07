@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.demo.enity.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +17,17 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.example.demo.enity.Users;
-import com.example.demo.mapper.usersMapper;
+import com.example.demo.mapper.UsersMapper;
 import com.example.demo.service.UsersService;
 import com.example.demo.util.JsonUtil;
+
+import javax.servlet.http.HttpSession;
 
 @Service
 public class UsersServiceImpl implements UsersService {
 
 	@Autowired
-    private usersMapper UsersMapper;
+    private UsersMapper UsersMapper;
 
 	@Override
 	public JSONArray findAll() {
@@ -33,6 +38,20 @@ public class UsersServiceImpl implements UsersService {
 
         return allProductJSON;
 	}
+
+	@Override
+	public JSONArray findByPage(int currentPage, int pageNum) {
+		IPage<Users> usersPage = new Page<>(currentPage, pageNum);//参数一是当前页，参数二是每页个数
+
+		usersPage = UsersMapper.selectPage(usersPage,null);
+
+		List<Users> list = usersPage.getRecords();
+
+		JSONArray allProductJSON=JsonUtil.list2JSONArray(list);
+
+		return allProductJSON;
+	}
+
 
 	@Override
 	public JSONArray findByUserId(int user_id) {
@@ -163,5 +182,108 @@ public class UsersServiceImpl implements UsersService {
 
 		UsersMapper.update(User,updateWrapper);
 		return true;
+	}
+
+
+
+
+    @Override
+	public JSONObject login(JSONObject jsonObject) {
+		String userName = jsonObject.getString("userName");
+
+		String password = jsonObject.getString("password");
+
+		if(!isUserNameExisting(userName)){
+
+		    return JsonUtil.errorJSON("username don't exist!");
+
+		}
+
+        if(findByUserNameOne(userName).getPassword().equals(password)){
+
+
+            return JsonUtil.successJSON();
+        }
+        else{
+            return JsonUtil.errorJSON("username or password error!");
+        }
+
+
+	}
+
+	@Override
+
+	public JSONObject register(JSONObject jsonObject) {
+
+		String userName;
+		String password;
+		try {
+			userName = jsonObject.getString("userName");
+
+			password = jsonObject.getString("password");
+			//注册时有重名，则注册失败
+			if (isUserNameExisting(userName)) {
+				return JsonUtil.errorJSON("username exists!");
+			}
+
+		}
+		catch (Exception e){
+			return JsonUtil.errorJSON("Json error");
+		}
+
+
+
+
+		//校验是否符合规范
+
+
+        Users user=new Users();
+        user.setUserName(userName);
+        user.setPassword(password);
+        try {
+			insert(user);
+		}
+        catch (Exception e){
+        	return JsonUtil.errorJSON("insert error");
+		}
+
+		return JsonUtil.successJSON();
+	}
+
+	@Override
+	public boolean isUserNameExisting(String userName) {
+
+		Map<String,Object> usersMap= new HashMap<String, Object>();
+
+		usersMap.put("user_name", userName);
+
+		List<Users> usersList = UsersMapper.selectByMap(usersMap);
+
+		if(usersList.size()==1){
+			return true;
+		}
+
+		else{
+			return false;
+		}
+	}
+
+
+	@Override
+	public Users findByUserNameOne(String userName) {
+		Map<String,Object> usersMap= new HashMap<String, Object>();
+
+		usersMap.put("user_name", userName);
+
+		List<Users> usersList = UsersMapper.selectByMap(usersMap);
+
+		if(usersList.size()==1){
+			return usersList.get(0);
+		}
+
+		else{
+			return null;
+		}
+
 	}
 }

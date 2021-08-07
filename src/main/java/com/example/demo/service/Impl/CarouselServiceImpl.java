@@ -3,24 +3,30 @@ package com.example.demo.service.Impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.enity.Carousel;
-import com.example.demo.mapper.carouselMapper;
+import com.example.demo.enity.Category;
+import com.example.demo.mapper.CarouselMapper;
 import com.example.demo.service.CarouselService;
 import com.example.demo.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class CarouselServiceImpl implements CarouselService {
 
     @Autowired
-    carouselMapper CarouselMapper;
+    CarouselMapper CarouselMapper;
 
     @Override
     public JSONArray findALL() {
-        return null;
+        List<Carousel> categoryList= CarouselMapper.selectList(null);
+
+        JSONArray allProductJSON= JsonUtil.list2JSONArray(categoryList);
+
+        return allProductJSON;
     }
 
     @Override

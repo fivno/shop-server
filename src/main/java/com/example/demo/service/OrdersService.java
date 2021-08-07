@@ -8,7 +8,7 @@ public interface OrdersService {
 
     //查
     JSONArray findALL();
-
+    JSONArray findByPage(int currentPage,int pageNum);  //当前页，每页个数
     JSONObject findById(int id);
 
     JSONArray findByOrderId(int order_id);

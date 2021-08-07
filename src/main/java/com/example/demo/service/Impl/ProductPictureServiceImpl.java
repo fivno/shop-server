@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.demo.enity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.example.demo.enity.ProductPicture;
-import com.example.demo.mapper.Product_pictureMapper;
+import com.example.demo.mapper.ProductPictureMapper;
 import com.example.demo.service.ProductPictureService;
 import com.example.demo.util.JsonUtil;
 
@@ -23,7 +26,7 @@ public class ProductPictureServiceImpl implements ProductPictureService {
 
 	
 	@Autowired
-    private Product_pictureMapper product_pictureMapper;
+    private ProductPictureMapper product_pictureMapper;
 	
 	@Override
 	public JSONArray findALL() {
@@ -34,6 +37,20 @@ public class ProductPictureServiceImpl implements ProductPictureService {
 
         return allProductJSON;
 	}
+
+	@Override
+	public JSONArray findByPage(int currentPage, int pageNum) {
+		IPage<ProductPicture> productPicturePage = new Page<>(currentPage, pageNum);//参数一是当前页，参数二是每页个数
+
+		productPicturePage = product_pictureMapper.selectPage(productPicturePage,null);
+
+		List<ProductPicture> list = productPicturePage.getRecords();
+
+		JSONArray allProductJSON=JsonUtil.list2JSONArray(list);
+
+		return allProductJSON;
+	}
+
 
 	@Override
 	public JSONObject findById(int id) {

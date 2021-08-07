@@ -2,6 +2,7 @@ package com.example.demo.util;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.constants.Constants;
 import com.example.demo.enity.*;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
@@ -152,6 +153,45 @@ public class JsonUtil {
 
         Users Obj=new Users(userId,userName,password,userPhoneNumber,userAddress);
         return Obj;
+    }
+
+
+    public static JSONObject successJSON() {
+
+        JSONObject resultJson = new JSONObject();
+
+        resultJson.put("info", Constants.QUERY_SUCCESS);
+
+        resultJson.put("msg", Constants.QUERY_SUCCESS);
+        resultJson.put("code", Constants.SUCCESS_CODE);
+
+        return resultJson;
+
+    }
+
+
+    public static JSONObject successJSON(Object info) {
+
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("info", info);
+        resultJson.put("msg", Constants.QUERY_SUCCESS);
+        resultJson.put("code", Constants.SUCCESS_CODE);
+
+        return resultJson;
+
+    }
+
+
+    public static JSONObject errorJSON(Object info) {
+
+        JSONObject resultJson = new JSONObject();
+
+        resultJson.put("info", info);
+        resultJson.put("msg", Constants.QUERY_FAILED);
+        resultJson.put("code", Constants.ERROR_CODE);
+
+        return resultJson;
+
     }
 
 
